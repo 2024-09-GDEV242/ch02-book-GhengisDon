@@ -101,4 +101,14 @@ class Book
     {
         System.out.println("The reference value assigned to this book is "+ref+".");
     }
+    
+    /**
+     * still have to do 2.90/2.91/2.92
+     * December 3rd, 2024
+     * 
+     * for 2.90 edit information in block starting line 28. the changes here are to make sure that the input is a minimum of 3 values alpha numeric
+     * for 2.91 add new method for a counter called "borrow", each time it is called add 1 to the counter, store the number, modify block starting at line 88 to update with counter.
+     * for 2.92 add new method called "isCourseText", if true then print out it is a necessity for a course, if false print out it is not a necessity. if book is for a course provide this information in block starting line 17.
+     */
+    
 }
