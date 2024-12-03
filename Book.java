@@ -4,14 +4,14 @@
  * as a library system, for instance.
  *
  * @author Don Santiago
- * @version September 10th 2024
+ * @version December 3rd 2024
  */
 class Book
 {
     // The fields.
-    private String author;
-    private String title;
-    private int pages;
+    private String author; //store input name of author line within "quotations" in live
+    private String title; //store input name of title of book within "quotations" in live
+    private int pages; //store integer of numbers
     private String refNumber;
 
     /**
@@ -22,7 +22,6 @@ class Book
     {
         author = bookAuthor;
         title = bookTitle;
-        pages=0;
     }
 
     /**
@@ -43,6 +42,7 @@ class Book
     
     /**
      * print page counter of book
+     * ##need to return pages, currently prints zero
      */
     public int getPages()
     {
@@ -54,7 +54,7 @@ class Book
      */
     public void printTitle()
     {
-        System.out.println(title);
+        System.out.println("The title of this book is called "+title+".");
     }
     
     /**
@@ -62,7 +62,7 @@ class Book
      */
     public void printAuthor()
     {
-        System.out.println(author);
+        System.out.println("The book was written by "+ author+".");
     }
     
     /**
@@ -71,7 +71,7 @@ class Book
      */
     public void print()
     {
-        System.out.println(title+" by the author"+author+" contains a total of "+pages+" pages in the book");
+        System.out.println(title+" by the author "+author+" contains a total of "+pages+" pages in the book.");
     }
     
     /**
