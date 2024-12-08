@@ -4,7 +4,7 @@
  * as a library system, for instance.
  *
  * @author Don Santiago
- * @version December 3rd 2024
+ * @version December 8th 2024
  */
 class Book
 {
@@ -13,24 +13,36 @@ class Book
     private String title; //store input name of title of book within "quotations" in live
     private int pages; //store integer of numbers as pages in live
     private String ref; //store input of a reference number within "quotations" in live
-
+    private int borrowCounter=0;//store integer of number of times book is borrowed, set to zero for each object in live.
+    private boolean isCourseText;//store requirement of true or false for each object in live
+    
     /**
-     * Set the author and title fields when this object
+     * Set the directory information fields when this object
      * is constructed.
      */
-    public Book(String bookAuthor, String bookTitle,int bookPages)
+    public Book(String bookAuthor, String bookTitle,String refValue, int bookPages,boolean isCourseText)
     {
         author = bookAuthor; //information saved as bookAuthor, returned as just author
         title = bookTitle; //information saved as bookTitle, returned as just title
         pages = bookPages; //information saved as bookPages, returned as just pages
+        ref=refValue;//information saved as refValue, returned as ref
+        isCourseText=isCourseText;//true or false if book is required as textbook reading,
     }
     
     /**
-    * this should allow for the input of a reference number
+    * this should allow for modifications to reference number
+    * 
+    * Assign multiple behaviors for requirements to be refValue.
+    * if the field has an entry and it is at minimum character size of at least "3"
+    * and the field has entries that only have characters within the set of a-z,A-Z,0-9
+    * then save, otherwise return
     */
     public void setRefNumber(String refValue)
     {
-        ref=refValue; //information saved as refValue, returned as ref 
+        if (refValue != null && refValue.length()>= 3 && refValue.matches("[a-zA-Z0-9]+"))
+        ref=refValue;
+    else{
+        System.out.println("Error:Reference must be 3 alphanumeric");}
     }
         
     /**
@@ -69,6 +81,21 @@ class Book
             return ref; //show the reference number that was stored on the object
         }
     
+        /**
+         * assign a true or false value to isCourseText
+         */
+        public void setIsCourseText(boolean value)
+        {
+            isCourseText=value; //set a true or false
+        }
+        
+    /**
+    * increase the current borrow count of the object
+    */
+    public void borrow(){
+        borrowCounter++;
+    }
+    
     /**
      * print the name of the author
      */
@@ -103,12 +130,13 @@ class Book
     }
     
     /**
-     * still have to do 2.90/2.91/2.92
-     * December 3rd, 2024
-     * 
-     * for 2.90 edit information in block starting line 28. the changes here are to make sure that the input is a minimum of 3 values alpha numeric
-     * for 2.91 add new method for a counter called "borrow", each time it is called add 1 to the counter, store the number, modify block starting at line 88 to update with counter.
-     * for 2.92 add new method called "isCourseText", if true then print out it is a necessity for a course, if false print out it is not a necessity. if book is for a course provide this information in block starting line 17.
+     * print message of course book requirement
      */
-    
-}
+    public void printCourseTextInfo(){
+        if (isCourseText){
+            System.out.println("The book "+title +". "+ref +" by "+author+" has been assigned as a requirement for a class"+".");
+        }else{
+                System.out.println("This book is not required.");
+            }
+        }
+    }
